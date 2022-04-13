@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myATM.Client.DTO
+namespace myATM.Clients.DTO
 {
     [AutoMapFrom(typeof(Client))]
     public class ClientDTO : EntityDto<int>
