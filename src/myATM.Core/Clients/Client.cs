@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace myATM.Clients
 {
-    public class Client : Entity<int>
+    public class Client : Entity
     {
         public string Name { get; set; }
         public int Pin { get; set; }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myATM.EntityFrameworkCore;
 
 namespace myATM.Migrations
 {
     [DbContext(typeof(myATMDbContext))]
-    partial class myATMDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220413094057_Add-Accounts")]
+    partial class AddAccounts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1330,32 +1332,6 @@ namespace myATM.Migrations
                     b.ToTable("AbpWebhookSubscriptions");
                 });
 
-            modelBuilder.Entity("myATM.Accounts.Account", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AccountNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AccountType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("AvailableBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.ToTable("Accounts");
-                });
-
             modelBuilder.Entity("myATM.Authorization.Roles.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -1812,17 +1788,6 @@ namespace myATM.Migrations
                         .IsRequired();
 
                     b.Navigation("WebhookEvent");
-                });
-
-            modelBuilder.Entity("myATM.Accounts.Account", b =>
-                {
-                    b.HasOne("myATM.Clients.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("myATM.Authorization.Roles.Role", b =>

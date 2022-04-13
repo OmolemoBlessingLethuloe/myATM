@@ -4,6 +4,7 @@ using myATM.Authorization.Roles;
 using myATM.Authorization.Users;
 using myATM.MultiTenancy;
 using myATM.Clients;
+using myATM.Accounts;
 
 namespace myATM.EntityFrameworkCore
 {
@@ -18,6 +19,7 @@ namespace myATM.EntityFrameworkCore
         }
 
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Account> Accounts { get; set; }
 
     }
 }
